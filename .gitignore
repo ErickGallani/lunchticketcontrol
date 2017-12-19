@@ -102,3 +102,9 @@ ENV/
 
 # sqlite database
 *.sqlite3
+
+# Node Modules
+node_modules/
+
+# IDE config file
+.idea/
