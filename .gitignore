@@ -108,3 +108,4 @@ node_modules/
 
 # IDE config file
 .idea/
+.vscode/
