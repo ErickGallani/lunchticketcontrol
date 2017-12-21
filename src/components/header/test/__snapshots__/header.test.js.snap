@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly headr 1`] = `
+<div
+  className="header"
+>
+  <p>
+    Header
+  </p>
+</div>
+`;
