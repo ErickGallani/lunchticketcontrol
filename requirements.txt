@@ -10,6 +10,7 @@ flask-restful-swagger-2==0.35
 Flask-Script==2.0.6
 Flask-SQLAlchemy==2.3.2
 flask-swagger-ui==3.6.0
+Flask-Testing==0.7.1
 itsdangerous==0.24
 Jinja2==2.10
 Mako==1.0.7

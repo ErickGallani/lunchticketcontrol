@@ -1,10 +1,11 @@
-import sys, os
-sys.path.insert(0, os.path.dirname(__file__))
-
+import sys
+import os
 from setup import api, app
 from flask_migrate import Migrate
-from database.config import db
 
+sys.path.insert(0, os.path.dirname(__file__))
+
+from database.config import db
 from resources.user import UserResource
 from resources.ticket import TicketResource
 
