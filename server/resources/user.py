@@ -2,6 +2,7 @@ from flask_restful import reqparse
 from flask_restful_swagger_2 import Resource
 from models.user import User
 
+
 class UserResource(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('username',
