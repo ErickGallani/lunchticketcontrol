@@ -18,5 +18,18 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 
+class StagingConfig(Config):
+    DEBUG = True
+
+
 class TestingConfig(Config):
+    # in memory database
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
     TESTING = True
+
+app_config = {
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'staging': StagingConfig,
+    'production': ProductionConfig,
+}

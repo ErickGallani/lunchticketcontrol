@@ -1,6 +1,6 @@
-from database.config import db
-from database.helpers.uuid_helper import generate_uuid
-import uuid
+from app.database.database_config import db
+from app.helpers.uuid_helper import generate_uuid
+
 
 class Ticket(db.Model):
     __tablename__ = 'tickets'
@@ -14,7 +14,7 @@ class Ticket(db.Model):
 
     @classmethod
     def find_by_date(cls, date):
-        return cls.query.filter_by(time=date).first()
+        return cls.query.filter_by(time=date)
 
     def save_or_update(self):
         db.session.add(self)

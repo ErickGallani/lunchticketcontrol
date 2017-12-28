@@ -1,19 +1,20 @@
-import os
 import unittest
-import tempfile
-from setup import app, api
+from app import create_app, db
 
 
-class FlaskTestCase(unittest.TestCase):
+class UserResourceTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
-        app.testing = True
-        self.app = app.test_client()
+        self.app = create_app(config_name="testing")
+        self.client = self.app.test_client
+
+        with self.app.app_context():
+            db.create_all()
 
     def tearDown(self):
-        os.close(self.db_fd)
-        os.unlink(app.config['DATABASE'])
+        with self.app.app_context():
+            db.session.close()
+            db.drop_all()
 
     def test_send_post_without_username(self):
         rv = self.user_post(password="123abc")

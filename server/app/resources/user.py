@@ -1,6 +1,6 @@
 from flask_restful import reqparse
 from flask_restful_swagger_2 import Resource
-from models.user import User
+from app.models.user import User
 
 
 class UserResource(Resource):
@@ -8,13 +8,12 @@ class UserResource(Resource):
     parser.add_argument('username',
         type=str,
         required=True,
-        help="This field cannot be blank."
-    )
+        help="This field cannot be blank.")
+
     parser.add_argument('password',
         type=str,
         required=True,
-        help="This field cannot be blank."
-    )
+        help="This field cannot be blank.")
 
     def post(self):
         data = UserResource.parser.parse_args()
