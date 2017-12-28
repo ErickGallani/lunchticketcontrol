@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful_swagger_2 import Api
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_jwt import JWT
+from flask_cors import CORS
 from app.auth.security import authenticate, identity
 from app.resources.user import UserResource
 from app.resources.ticket import TicketResource
@@ -20,6 +21,10 @@ def create_app(config_name):
     api = Api(app, api_version='1.0', api_spec_url='/api/swagger')
 
     jwt = JWT(app, authenticate, identity)  # /auth is the endpoint used by JWT
+
+    # allow CORS for the swagger json endpoint to be able to use
+    # swagger ui on endpoint /api/docs
+    CORS(app, resources={r"/api/swagger.json": {"origins": "*"}})
 
     UserResource.add_to_api_resource(api)
     TicketResource.add_to_api_resource(api)

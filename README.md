@@ -11,7 +11,7 @@
 * #### Install Python & Pip on windows
     * https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation
 
-* Ensure you have python3 globally installed in your computer. If not, you can get python3 [here](https://www.python.org).
+* Ensure you have python3 globally installed in your computer.
 * After this, ensure you have installed virtualenv globally as well. If not, run this:
     ```
     $ pip install virtualenv
@@ -56,6 +56,7 @@
     * [Flask-JWT](https://pythonhosted.org/Flask-JWT/)
     * [SQLAlchemy](https://www.sqlalchemy.org/)
     * [Alembic](https://pypi.python.org/pypi/alembic)
+    * [PyQRCode](https://pypi.python.org/pypi/PyQRCode)
 * #### Frontend
     * [ReactJS](https://reactjs.org/)
     * [NodeJS](https://nodejs.org/)
