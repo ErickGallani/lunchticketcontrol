@@ -2,10 +2,10 @@
 * Lunch ticket control application with qCode generation.
 
 ## Requirements
-* Python
-* Pip
-* VirtualEnv
-* NodeJS
+* [Python3](https://www.python.org/)
+* [Pip](https://pypi.python.org/pypi/pip)
+* [Virtualenv](https://virtualenv.pypa.io/en/stable/)
+* [NodeJS](https://nodejs.org/)
 
 ## Installation / Usage
 * #### Install Python & Pip on windows
