@@ -1,3 +1,4 @@
+from datetime import datetime
 from app.database.database_config import db
 from app.helpers.uuid_helper import generate_uuid
 
@@ -11,6 +12,7 @@ class Ticket(db.Model):
 
     def __init__(self, time):
         self.time = time
+        self.created_at = datetime.now()
 
     @classmethod
     def find_by_date(cls, date):

@@ -1,7 +1,7 @@
 import flask
+from datetime import datetime
 from app.database.database_config import db
 from app.helpers.uuid_helper import generate_uuid
-from datetime import datetime
 from sqlalchemy_utils import PasswordType, force_auto_coercion
 
 force_auto_coercion()
