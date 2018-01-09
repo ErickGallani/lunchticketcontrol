@@ -6,6 +6,7 @@ from flask_cors import CORS
 from app.auth.security import authenticate, identity
 from app.resources.user import UserResource
 from app.resources.ticket import TicketResource
+from app.resources.home import HomeResource
 from app.config import app_config
 from app.database.database_config import db
 
@@ -28,6 +29,7 @@ def create_app(config_name):
 
     UserResource.add_to_api_resource(api)
     TicketResource.add_to_api_resource(api)
+    HomeResource.add_to_api_resource(api)
 
     db.init_app(app)
 
