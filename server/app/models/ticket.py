@@ -10,6 +10,9 @@ class Ticket(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     time = db.Column(db.DateTime, nullable=False)
 
+    availability_id = db.Column(db.String, db.ForeignKey('availabilities.id'), nullable=True)
+    user_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=True)
+
     def __init__(self, time):
         self.time = time
         self.created_at = datetime.now()

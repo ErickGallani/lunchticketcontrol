@@ -17,7 +17,7 @@ class AppTestCase(unittest.TestCase):
             db.session.close()
             db.drop_all()
 
-    def test_empty_db(self):
+    def test_home_endpoint(self):
         rv = self.test_app.get('/')
         data_json = json.loads(rv.data.decode("utf-8"))
 

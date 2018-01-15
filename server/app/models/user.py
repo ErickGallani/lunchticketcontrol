@@ -22,6 +22,10 @@ class User(db.Model):
         ), unique=False, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
 
+    ticket_id = db.Column(db.String, db.ForeignKey('tickets.id'), nullable=True)
+
+    tickets_history = db.relationship('TicketHistory', backref='ticket_histories', lazy=True)
+
     def __init__(self, username, password):
         self.username = username
         self.password = password
