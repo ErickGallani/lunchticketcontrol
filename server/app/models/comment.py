@@ -19,6 +19,10 @@ class Comment(db.Model):
         self.text = text
         self.created_at = datetime.now()
 
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.query.get(id)
+
     def save_or_update(self):
         db.session.add(self)
         db.session.commit()

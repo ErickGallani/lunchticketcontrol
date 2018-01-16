@@ -8,6 +8,7 @@ class Availability(db.Model):
 
     id = db.Column(db.String(40), primary_key=True, default=generate_uuid)
     created_at = db.Column(db.DateTime, nullable=False)
+    time = db.Column(db.DateTime, nullable=False)
 
     meal_id = db.Column(db.String, db.ForeignKey('meals.id'), nullable=False)
 

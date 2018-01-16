@@ -11,7 +11,9 @@ class Ticket(db.Model):
     time = db.Column(db.DateTime, nullable=False)
 
     availability_id = db.Column(db.String, db.ForeignKey('availabilities.id'), nullable=True)
+
     user_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=True)
+    user = db.relationship("User", back_populates="tickets")
 
     def __init__(self, time):
         self.time = time

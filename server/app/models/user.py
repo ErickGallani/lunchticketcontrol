@@ -22,7 +22,9 @@ class User(db.Model):
         ), unique=False, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
 
-    ticket_id = db.Column(db.String, db.ForeignKey('tickets.id'), nullable=True)
+    # ticket_id = db.Column(db.String, db.ForeignKey('tickets.id'), nullable=True)
+
+    ticket = db.relationship("Ticket", uselist=False, back_populates="users")
 
     tickets_history = db.relationship('TicketHistory', backref='ticket_histories', lazy=True)
 

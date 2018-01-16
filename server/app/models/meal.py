@@ -11,6 +11,7 @@ class Meal(db.Model):
     picture = db.Column(db.LargeBinary, nullable=False)
     title = db.Column(db.String(25), nullable=False)
     description = db.Column(db.String(250), nullable=False)
+    date = db.Column(db.Date, nullable=False)
 
     availabilities = db.relationship('Availability', backref='meals', lazy=True)
 
@@ -19,6 +20,10 @@ class Meal(db.Model):
         self.description = description
         self.picture = picture
         self.created_at = datetime.now()
+
+    @classmethod
+    def get_by_date(cls, date):
+        return cls.query.filter_by(date=date)
 
     def save_or_update(self):
         db.session.add(self)
