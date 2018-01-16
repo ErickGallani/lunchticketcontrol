@@ -28,4 +28,4 @@ class UserResource(Resource):
 
     @classmethod
     def add_to_api_resource(cls, api):
-        api.add_resource(UserResource, '/api/user')
+        api.add_resource(UserResource, '/api/users')

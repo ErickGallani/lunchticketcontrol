@@ -25,6 +25,10 @@ class Meal(db.Model):
     def get_by_date(cls, date):
         return cls.query.filter_by(date=date)
 
+    @classmethod
+    def get(cls, id):
+        return cls.query.get(id)
+
     def save_or_update(self):
         db.session.add(self)
         db.session.commit()

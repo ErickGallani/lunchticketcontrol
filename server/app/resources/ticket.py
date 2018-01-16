@@ -12,4 +12,4 @@ class TicketResource(Resource):
 
     @classmethod
     def add_to_api_resource(cls, api):
-        api.add_resource(TicketResource, '/api/ticket/<string:ticket_date>')
+        api.add_resource(TicketResource, '/api/tickets/<uuid:date>')

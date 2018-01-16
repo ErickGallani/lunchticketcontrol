@@ -6,7 +6,7 @@ from flask_cors import CORS
 from app.auth.security import authenticate, identity
 from app.resources.user import UserResource
 from app.resources.ticket import TicketResource
-from app.resources.meal import MealResource
+from app.resources.meal import MealResource, MealListResource
 from app.resources.comment import CommentResource
 from app.resources.home import HomeResource
 from app.config import app_config
@@ -29,11 +29,7 @@ def create_app(config_name):
     # swagger ui on endpoint /api/docs
     CORS(app, resources={r"/api/swagger.json": {"origins": "*"}})
 
-    UserResource.add_to_api_resource(api)
-    TicketResource.add_to_api_resource(api)
-    MealResource.add_to_api_resource(api)
-    CommentResource.add_to_api_resource(api)
-    HomeResource.add_to_api_resource(api)
+    __add_resources(api)
 
     db.init_app(app)
 
@@ -48,6 +44,24 @@ def create_app(config_name):
     app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
     return app, api, jwt
+
+
+def __add_resources(api):
+    # User resources
+    UserResource.add_to_api_resource(api)
+
+    # Ticket resources
+    TicketResource.add_to_api_resource(api)
+
+    # Meal resources
+    MealResource.add_to_api_resource(api)
+    MealListResource.add_to_api_resource(api)
+
+    # Comment resources
+    CommentResource.add_to_api_resource(api)
+
+    # Home resources
+    HomeResource.add_to_api_resource(api)
 
 
 def get_app(func):

@@ -1,17 +1,17 @@
-"""Initial data model
+"""Initial database modeling
 
-Revision ID: 0ba2c7c09215
+Revision ID: ad6048f26c54
 Revises: 
-Create Date: 2018-01-15 23:41:45.682878
+Create Date: 2018-01-16 21:39:17.940243
 
 """
-import sqlalchemy_utils
 from alembic import op
+import sqlalchemy_utils
 import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0ba2c7c09215'
+revision = 'ad6048f26c54'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +25,7 @@ def upgrade():
     sa.Column('picture', sa.LargeBinary(), nullable=False),
     sa.Column('title', sa.String(length=25), nullable=False),
     sa.Column('description', sa.String(length=250), nullable=False),
+    sa.Column('date', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
@@ -38,6 +39,7 @@ def upgrade():
     op.create_table('availabilities',
     sa.Column('id', sa.String(length=40), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
+    sa.Column('time', sa.DateTime(), nullable=False),
     sa.Column('meal_id', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['meal_id'], ['meals.id'], ),
     sa.PrimaryKeyConstraint('id')

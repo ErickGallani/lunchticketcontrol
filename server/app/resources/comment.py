@@ -10,4 +10,4 @@ class CommentResource(Resource):
 
     @classmethod
     def add_to_api_resource(cls, api):
-        api.add_resource(CommentResource, '/api/comment/<string:id>')
+        api.add_resource(CommentResource, '/api/comments/<uuid:id>')
