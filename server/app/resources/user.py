@@ -1,6 +1,9 @@
 from flask_restful import reqparse
-from flask_restful_swagger_2 import Resource
+from flask_restful_swagger_2 import Resource, swagger
+from flask_jwt import jwt_required
 from app.models.user import User
+from app.models.ticket_history import TicketHistory
+from app.resources.docs.ticket import TicketHistoryResourceDoc
 
 
 class UserResource(Resource):
@@ -29,3 +32,14 @@ class UserResource(Resource):
     @classmethod
     def add_to_api_resource(cls, api):
         api.add_resource(UserResource, '/api/users')
+
+
+class TicketHistoryResource(Resource):
+    @swagger.doc(TicketHistoryResourceDoc.get_docs())
+    @jwt_required()
+    def get(self, id):
+        return TicketHistory.get(id), 200
+
+    @classmethod
+    def add_to_api_resource(cls, api):
+        api.add_resource(TicketHistoryResource, '/api/users/<uuid:id>/tickets')

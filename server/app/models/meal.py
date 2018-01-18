@@ -1,7 +1,7 @@
 from datetime import datetime
 from app.database.database_config import db
 from app.helpers.uuid_helper import generate_uuid
-
+from app.models.availability import Availability
 
 class Meal(db.Model):
     __tablename__ = 'meals'

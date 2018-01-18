@@ -30,10 +30,11 @@ class MealResource(Resource):
 class MealListResource(Resource):
     @swagger.doc(MealListResourceDoc.get_by_date_docs())
     def get(self):
-        parser = reqparse.RequestParser()
-        args = parser.parse_args()
-        date = args['date']
-        return Meal.get_by_date(date), 200
+        # parser = reqparse.RequestParser()
+        # args = parser.parse_args()
+        # date = args['date']
+        # return Meal.get_by_date(date), 200
+        return '', 200
 
     @swagger.doc(MealListResourceDoc.post_docs())
     @jwt_required()

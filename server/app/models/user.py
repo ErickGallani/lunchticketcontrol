@@ -24,9 +24,9 @@ class User(db.Model):
 
     # ticket_id = db.Column(db.String, db.ForeignKey('tickets.id'), nullable=True)
 
-    ticket = db.relationship("Ticket", uselist=False, back_populates="users")
+    ticket = db.relationship("Ticket", uselist=False, back_populates="user")
 
-    tickets_history = db.relationship('TicketHistory', backref='ticket_histories', lazy=True)
+    ticket_histories = db.relationship('TicketHistory', backref='user', lazy=True)
 
     def __init__(self, username, password):
         self.username = username

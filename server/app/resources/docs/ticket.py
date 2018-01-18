@@ -24,3 +24,9 @@ class TicketResourceDoc:
                 }
             }
         }
+
+
+class TicketHistoryResourceDoc:
+    @staticmethod
+    def get_docs():
+        return {}

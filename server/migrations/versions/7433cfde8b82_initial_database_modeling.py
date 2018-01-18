@@ -1,17 +1,17 @@
 """Initial database modeling
 
-Revision ID: ad6048f26c54
+Revision ID: 7433cfde8b82
 Revises: 
-Create Date: 2018-01-16 21:39:17.940243
+Create Date: 2018-01-18 00:59:29.311067
 
 """
 from alembic import op
-import sqlalchemy_utils
 import sqlalchemy as sa
+import sqlalchemy_utils
 
 
 # revision identifiers, used by Alembic.
-revision = 'ad6048f26c54'
+revision = '7433cfde8b82'
 down_revision = None
 branch_labels = None
 depends_on = None

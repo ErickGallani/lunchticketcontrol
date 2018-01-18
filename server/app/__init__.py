@@ -4,7 +4,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from flask_jwt import JWT
 from flask_cors import CORS
 from app.auth.security import authenticate, identity
-from app.resources.user import UserResource
+from app.resources.user import UserResource, TicketHistoryResource
 from app.resources.ticket import TicketResource
 from app.resources.meal import MealResource, MealListResource
 from app.resources.comment import CommentResource
@@ -52,6 +52,7 @@ def __add_resources(api):
 
     # Ticket resources
     TicketResource.add_to_api_resource(api)
+    TicketHistoryResource.add_to_api_resource(api)
 
     # Meal resources
     MealResource.add_to_api_resource(api)
