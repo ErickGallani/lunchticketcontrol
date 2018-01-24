@@ -1,0 +1,23 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+      "outDir": "./public/",
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "target": "es5",
+      "module": "commonjs",
+      "jsx": "react",
+      "lib": [ "dom", "es2015", "es2016" ],
+      "moduleResolution": "node",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "strict": true
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}

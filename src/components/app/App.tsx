@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import './app.css';
 
 export default class App extends React.Component {
-    constructor(props){
+    constructor(props: any){
         super(props);
     }
     

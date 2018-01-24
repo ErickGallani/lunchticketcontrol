@@ -12,16 +12,26 @@
     "test-update": "jest -u"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "material-ui": "^0.20.0",
     "moment": "^2.20.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "webpack": "^3.10.0"
+    "redux": "^3.7.2"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.8",
+    "@types/jest": "^22.1.0",
+    "@types/material-ui": "^0.20.5",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.34",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-redux": "^5.0.14",
+    "@types/react-router-dom": "^4.2.3",
+    "@types/redux": "^3.6.0",
+    "awesome-typescript-loader": "^3.4.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.3",
@@ -32,23 +42,37 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
-    "enzyme": "^3.2.0",
+    "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
-    "jest": "^22.0.3",
+    "jest": "^22.1.4",
     "live-server": "^1.2.0",
     "normalize.css": "^7.0.0",
     "react-addons-shallow-compare": "^15.6.2",
+    "react-test-renderer": "^16.2.0",
     "regenerator-runtime": "^0.11.1",
+    "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.1",
+    "ts-loader": "^3.3.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "**/src/components/**/*.{js,jsx}",
-      "**/src/actions/**/*.{js,jsx}",
-      "**/src/reducers/**/*.{js,jsx}"
+    "setupFiles": [
+      "./src/testConfig/test-shim.js",
+      "./src/testConfig/test-setup.js"
     ],
-    "setupTestFrameworkScriptFile": "./src/setupTests.js"
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "./src/testConfig/test-preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx|js)"
+    ]
   }
 }

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import './ticket.css';
 
 export default class Ticket extends React.Component {
-    constructor(props){
+    constructor(props: any){
         super(props);
     }
     
