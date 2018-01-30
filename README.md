@@ -61,6 +61,10 @@
     * [ReactJS](https://reactjs.org/)
     * [NodeJS](https://nodejs.org/)
     * [WebPack](https://webpack.js.org/)
+    * [TypeScript](https://www.typescriptlang.org/)
+    * [CSS Module](https://github.com/css-modules/css-modules)
+    * [Jest](https://facebook.github.io/jest/)
+    * [Enzyme](http://airbnb.io/enzyme/)
 
 
 ## For windows users using pycharm
