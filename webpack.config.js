@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -15,15 +16,35 @@ module.exports = {
       extensions: [".ts", ".tsx", ".js", ".json"]
   },
 
+  plugins: [
+    new webpack.WatchIgnorePlugin([
+      /css\.d\.ts$/
+    ])
+  ],
+
   module: {
       rules: [
-          // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-          { test: /\.tsx?$/, loader: "ts-loader", exclude: /node_modules/ },
+            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+            { test: /\.ts(x?)$/, loader: "babel-loader!ts-loader", exclude: /node_modules/ },
 
-          // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-          { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
 
-          { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+            // { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+            {
+                test: /\.css$/,
+                include: path.join(__dirname, 'src'),
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'typings-for-css-modules-loader',
+                        options: {
+                            modules: true,
+                            namedExport: true
+                        }
+                    }
+                ]
+            }
       ]
   },
 

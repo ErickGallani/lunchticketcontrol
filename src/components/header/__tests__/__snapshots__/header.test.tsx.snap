@@ -2,7 +2,7 @@
 
 exports[`renders correctly headr 1`] = `
 <div
-  className="header"
+  className="title"
 >
   <p>
     Header

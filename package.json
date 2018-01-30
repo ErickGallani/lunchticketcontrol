@@ -1,7 +1,7 @@
 {
   "name": "lunchticketapp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.tsx",
   "author": "Erick Gallani",
   "license": "MIT",
   "scripts": {
@@ -15,6 +15,7 @@
     "babel-polyfill": "^6.26.0",
     "material-ui": "^0.20.0",
     "moment": "^2.20.1",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -45,6 +46,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "live-server": "^1.2.0",
     "normalize.css": "^7.0.0",
@@ -55,6 +57,7 @@
     "style-loader": "^0.19.1",
     "ts-loader": "^3.3.1",
     "typescript": "^2.6.2",
+    "typings-for-css-modules-loader": "^1.7.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   },
@@ -73,6 +76,9 @@
     },
     "testMatch": [
       "**/__tests__/*.(ts|tsx|js)"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   }
 }
