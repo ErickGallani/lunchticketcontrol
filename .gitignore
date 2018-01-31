@@ -112,3 +112,7 @@ node_modules/
 
 # Database sqlite
 *.db
+
+# Project specific ignored files
+public/bundle.js
+public/bundle.js.map
