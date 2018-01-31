@@ -46,7 +46,7 @@
     You can now access the app on your local browser by using
 
 
-## Docs
+## Documentation
 * #### Backend
     * [Flask](http://flask.pocoo.org/)
     * [Flask Restful and Swagger](https://github.com/swege/flask-restful-swagger-2.0)
@@ -66,6 +66,11 @@
     * [Jest](https://facebook.github.io/jest/)
     * [Enzyme](http://airbnb.io/enzyme/)
 
+## Developer Tools
+* React Developer Tools
+    * https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
+* Redux Developer Tools
+    * https://github.com/zalmoxisus/redux-devtools-extension
 
 ## For windows users using pycharm
 * If you are on the windows environment and want to use cmder with pycharm you can do
