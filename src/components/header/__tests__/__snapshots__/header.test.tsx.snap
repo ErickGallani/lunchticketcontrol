@@ -5,7 +5,7 @@ exports[`renders correctly headr 1`] = `
   className="title"
 >
   <p>
-    Header
+    test
   </p>
 </div>
 `;

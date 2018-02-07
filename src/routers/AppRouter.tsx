@@ -5,7 +5,7 @@ import Header from '../components/header/Header';
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      <Header />
+      <Header title="Header" />
       <Switch>
       </Switch>
     </div>

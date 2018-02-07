@@ -5,6 +5,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 
+import './components/app/app.css'
+
 const store = configureStore();
 
 const App = () => (
