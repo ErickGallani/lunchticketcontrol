@@ -1,5 +1,5 @@
 ## Lunch Ticket Application
-* Lunch ticket control application with qCode generation.
+* Lunch ticket control application with qrCode generation.
 
 ## Requirements
 * [Python3](https://www.python.org/)
