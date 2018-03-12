@@ -17,10 +17,8 @@ class UserResourceTestCase(unittest.TestCase):
             db.drop_all()
 
     def test_send_post_without_username(self):
-        rv = self.user_post(password="123abc")
-        print(rv)
-        print(rv.data)
-        assert b'This field cannot be blank.' in rv.data
+        return_value = self.user_post(password="123abc")
+        assert b'This field cannot be blank.' in return_value.data
 
     def user_post(self, **kwargs):
         # kwargs should be a key value pair for username and password

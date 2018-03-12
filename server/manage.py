@@ -1,3 +1,4 @@
+""" This module is to help use migration with sqlalchemy """
 import os
 import unittest
 from flask_script import Manager
@@ -5,23 +6,23 @@ from flask_migrate import Migrate, MigrateCommand
 from app import db, get_app, create_app
 from app.models import availability, comment, meal, ticket, ticket_history, user
 
-config = os.getenv('APP_SETTINGS') or 'development'
+CONFIG = os.getenv('APP_SETTINGS') or 'development'
 
 # initialize the app with all its configurations
-app = get_app(create_app)(config)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app/data.db'
-migrate = Migrate(app, db)
+APP = get_app(create_app)(CONFIG)
+APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app/data.db'
+MIGRATE = Migrate(APP, db)
 # create an instance of class that will handle our commands
-manager = Manager(app)
+MANAGER = Manager(APP)
 
 # Define the migration command to always be preceded by the word "db"
 # Example usage: python manage.py db init
-manager.add_command('db', MigrateCommand)
+MANAGER.add_command('db', MigrateCommand)
 
 
 # define our command for testing called "test"
 # Usage: python manage.py test
-@manager.command
+@MANAGER.command
 def test():
     """Runs the unit tests without test coverage."""
     tests = unittest.TestLoader().discover('./tests', pattern='test*.py')
@@ -32,4 +33,4 @@ def test():
 
 
 if __name__ == '__main__':
-    manager.run()
+    MANAGER.run()

@@ -1,4 +1,6 @@
+""" This module is for aggregate all configs strategies """
 class Config(object):
+    """ Default config """
     # Debug mode. This should be False in production mode
     DEBUG = False
     # Secret key to be used on authentoication using JWT
@@ -11,25 +13,33 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    DATABASE_URI = 'mysql://user@localhost/foo'
+    """ Production configuration """
+    SQLALCHEMY_DATABASE_URI = 'mysql://user@localhost/foo'
 
 
 class DevelopmentConfig(Config):
+    """ Development configuration """
     DEBUG = True
 
 
 class StagingConfig(Config):
+    """ Staging configuration """
     DEBUG = True
 
 
 class TestingConfig(Config):
+    """ Test configuration """
     # in memory database
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    SQLALCHEMY_DATABASE_URI = 'sqlite://test.db'
     TESTING = True
 
-app_config = {
+APP_CONFIGS_TYPES = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
     'staging': StagingConfig,
     'production': ProductionConfig,
 }
+
+def get_app_config(config_name):
+    """ Get the application configuration by configuration name """
+    return APP_CONFIGS_TYPES[config_name]

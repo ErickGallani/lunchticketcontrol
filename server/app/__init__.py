@@ -1,3 +1,4 @@
+""" App bootstrap """
 from flask import Flask
 from flask_restful_swagger_2 import Api
 from flask_swagger_ui import get_swaggerui_blueprint
@@ -9,7 +10,7 @@ from app.resources.ticket import TicketResource
 from app.resources.meal import MealResource, MealListResource
 from app.resources.comment import CommentResource
 from app.resources.home import HomeResource
-from app.config import app_config
+from app.config import get_app_config
 from app.database.database_config import db
 
 SWAGGER_URL = '/api/docs'
@@ -17,9 +18,9 @@ API_URL = 'http://127.0.0.1:5050/api/swagger.json'
 
 
 def create_app(config_name):
-
+    """ Instantiate a new app with JWT and Swagger """
     app = Flask(__name__)
-    app.config.from_object(app_config[config_name])
+    app.config.from_object(get_app_config(config_name))
 
     api = Api(app, api_version='1.0', api_spec_url='/api/swagger')
 
@@ -47,6 +48,7 @@ def create_app(config_name):
 
 
 def __add_resources(api):
+    """ Add resources to the api """
     # User resources
     UserResource.add_to_api_resource(api)
 
@@ -66,18 +68,24 @@ def __add_resources(api):
 
 
 def get_app(func):
+    """ Get app object from the webapi object """
     def pick_app(*args, **kw):
+        """ Wrapper to get the app from webapi object """
         return func(*args, **kw)[0]
     return pick_app
 
 
 def get_api(func):
+    """ Get api object from the webapi object """
     def pick_api(*args, **kw):
+        """ Wrapper to get the api from webapi object """
         return func(*args, **kw)[1]
     return pick_api
 
 
 def get_jwt(func):
+    """ Get jwt object from the webapi object """
     def pick_jwt(*args, **kw):
+        """ Wrapper to get the jwt from webapi object """
         return func(*args, **kw)[2]
     return pick_jwt
