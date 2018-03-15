@@ -1,9 +1,11 @@
 """ App bootstrap """
+import logging
 from flask import Flask
 from flask_restful_swagger_2 import Api
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_jwt import JWT
 from flask_cors import CORS
+from raven.contrib.flask import Sentry
 from app.auth.security import authenticate, identity
 from app.resources.user import UserResource, TicketHistoryResource
 from app.resources.ticket import TicketResource
@@ -13,16 +15,22 @@ from app.resources.home import HomeResource
 from app.config import get_app_config
 from app.database.database_config import db
 
-SWAGGER_URL = '/api/docs'
-API_URL = 'http://127.0.0.1:5050/api/swagger.json'
+sentry = Sentry()
 
 
 def create_app(config_name):
     """ Instantiate a new app with JWT and Swagger """
     app = Flask(__name__)
-    app.config.from_object(get_app_config(config_name))
 
-    api = Api(app, api_version='1.0', api_spec_url='/api/swagger')
+    sentry.init_app(app, level=logging.ERROR)
+
+    api_configs = get_app_config(config_name)
+
+    app.config.from_object(api_configs)
+
+    api = Api(app,
+              api_version=api_configs.API_VERSION,
+              api_spec_url=api_configs.API_SPEC_URL)
 
     jwt = JWT(app, authenticate, identity)  # /auth is the endpoint used by JWT
 
@@ -35,14 +43,15 @@ def create_app(config_name):
     db.init_app(app)
 
     swaggerui_blueprint = get_swaggerui_blueprint(
-        SWAGGER_URL,
-        API_URL,
+        api_configs.SWAGGER_DOCS_URL,
+        api_configs.SWAGGER_API_URL,
         config={
             'app_name': "Lunch ticket application"
         },
     )
 
-    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+    app.register_blueprint(swaggerui_blueprint,
+                           url_prefix=api_configs.SWAGGER_DOCS_URL)
 
     return app, api, jwt
 

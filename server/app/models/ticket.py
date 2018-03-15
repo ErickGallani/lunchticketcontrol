@@ -17,7 +17,7 @@ class Ticket(db.Model):
 
     def __init__(self, time):
         self.time = time
-        self.created_at = datetime.now()
+        self.created_at = datetime.utcnow()
 
     @classmethod
     def find_by_date(cls, date):

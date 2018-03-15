@@ -19,7 +19,7 @@ class Meal(db.Model):
         self.title = title
         self.description = description
         self.picture = picture
-        self.created_at = datetime.now()
+        self.created_at = datetime.utcnow()
 
     @classmethod
     def get_by_date(cls, date):

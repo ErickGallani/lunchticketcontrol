@@ -10,6 +10,10 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SESSION_COOKIE_NAME = 'lunchticketapp'
     PASSWORD_SCHEMES = 'pbkdf2_sha512'
+    SWAGGER_DOCS_URL = '/api/docs'
+    SWAGGER_API_URL = 'http://127.0.0.1:5050/api/swagger.json'
+    API_SPEC_URL = '/api/swagger'
+    API_VERSION = '1.0'
 
 
 class ProductionConfig(Config):
