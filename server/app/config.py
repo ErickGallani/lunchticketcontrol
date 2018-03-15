@@ -30,7 +30,7 @@ class StagingConfig(Config):
 class TestingConfig(Config):
     """ Test configuration """
     # in memory database
-    SQLALCHEMY_DATABASE_URI = 'sqlite://test.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
     TESTING = True
 
 APP_CONFIGS_TYPES = {
