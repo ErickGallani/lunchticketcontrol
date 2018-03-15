@@ -1,12 +1,14 @@
+""" Tests for User resources """
 import unittest
-from app import create_app, db
+import json
+from app import get_app, create_app, db
 
 
 class UserResourceTestCase(unittest.TestCase):
-
+    """ User resources test case """
     def setUp(self):
-        self.app = create_app(config_name="testing")
-        self.client = self.app.test_client
+        self.app = get_app(create_app)(config_name="testing")
+        self.test_app = self.app.test_client()
 
         with self.app.app_context():
             db.create_all()
@@ -17,10 +19,11 @@ class UserResourceTestCase(unittest.TestCase):
             db.drop_all()
 
     def test_send_post_without_username(self):
-        return_value = self.user_post(password="123abc")
+        """ Test username validation """
+        return_value = self.__user_post(password="123abc")
         assert b'This field cannot be blank.' in return_value.data
 
-    def user_post(self, **kwargs):
+    def __user_post(self, **kwargs):
         # kwargs should be a key value pair for username and password
         # Eg. user_post(username='test', password='123')
         return self.app.post('/user',
