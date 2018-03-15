@@ -36,7 +36,7 @@ class AuthResourceTestCase(unittest.TestCase):
         return_value = self.__login('invalid_testuser', '123abc')
         data_json = json.loads(return_value.data.decode("utf-8"))
 
-        assert 'description' in data_json, \
+        assert b'description' in data_json, \
                 "return does not have 'description' property - %r" % data_json
         assert b'Invalid credentials' in data_json['description'], \
                 "Description does not contain 'Invalid credentials'"
@@ -46,7 +46,7 @@ class AuthResourceTestCase(unittest.TestCase):
         return_value = self.__login('testuser', '123abc123')
         data_json = json.loads(return_value.data.decode("utf-8"))
 
-        assert 'description' in data_json, \
+        assert b'description' in data_json, \
                 "return does not have 'description' property - %r" % data_json
         assert b'Invalid credentials' in data_json['description'], \
                 "Description does not contain 'Invalid credentials'"

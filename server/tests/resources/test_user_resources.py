@@ -26,11 +26,10 @@ class UserResourceTestCase(unittest.TestCase):
         assert b'username' in return_value.data
 
     def test_send_post_without_password(self):
-        """ Test username validation """
+        """ Test password validation """
         return_value = self.__user_post(username="test_username")
-        data_json = json.loads(return_value.data.decode("utf-8"))
 
-        assert b'This field cannot be blank.' in data_json
+        assert b'This field cannot be blank.' in return_value.data
         assert b'password' in return_value.data
 
     def __user_post(self, **kwargs):
