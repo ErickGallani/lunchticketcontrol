@@ -15,7 +15,7 @@ class Availability(db.Model):
     tickets = db.relationship('Ticket', backref='tickets', lazy=True)
 
     def __init__(self):
-        self.created_at = datetime.now()
+        self.created_at = datetime.utcnow()
 
     def save_or_update(self):
         db.session.add(self)

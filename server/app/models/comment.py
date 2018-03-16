@@ -17,7 +17,7 @@ class Comment(db.Model):
 
     def __init__(self, text):
         self.text = text
-        self.created_at = datetime.now()
+        self.created_at = datetime.utcnow()
 
     @classmethod
     def get_by_id(cls, id):

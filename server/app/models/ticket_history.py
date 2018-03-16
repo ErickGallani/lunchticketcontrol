@@ -12,7 +12,7 @@ class TicketHistory(db.Model):
     user_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self):
-        self.created_at = datetime.now()
+        self.created_at = datetime.utcnow()
 
     def save_or_update(self):
         db.session.add(self)
@@ -21,3 +21,7 @@ class TicketHistory(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    @classmethod
+    def get_by_user_id(cls, user_id):
+        return cls.query.filter_by(user_id=user_id).all()

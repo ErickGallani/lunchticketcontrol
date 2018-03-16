@@ -41,6 +41,7 @@
 * #### Running It
     On your terminal, run the server using this one simple command:
     ```
+    (venv)$ export SENTRY_DSN="https://public_key:private_key@sentry.io/project_id"
     (venv)$ python run.py
     ```
     You can now access the app on your local browser by using
@@ -65,6 +66,8 @@
     * [CSS Module](https://github.com/css-modules/css-modules)
     * [Jest](https://facebook.github.io/jest/)
     * [Enzyme](http://airbnb.io/enzyme/)
+* #### For Logging
+    * [Sentry](https://sentry.io/)
 
 ## Developer Tools
 * React Developer Tools

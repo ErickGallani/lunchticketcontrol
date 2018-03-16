@@ -31,7 +31,7 @@ class User(db.Model):
     def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.created_at = datetime.now()
+        self.created_at = datetime.utcnow()
 
     def save(self):
         db.session.add(self)
