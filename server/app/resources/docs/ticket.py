@@ -1,6 +1,11 @@
+""" Swagger documentation for ticket resources """
+
 class TicketResourceDoc:
+    """ Ticket resources swagger documentation """
+
     @staticmethod
     def get_docs():
+        """ Get endpoint documentation """
         return {
             'tags': ['ticket'],
             'description': 'Returns json',
@@ -27,6 +32,9 @@ class TicketResourceDoc:
 
 
 class TicketHistoryResourceDoc:
+    """ Ticket history resources swagger documentation """
+
     @staticmethod
     def get_docs():
+        """ Get endpoint documentation """
         return {}

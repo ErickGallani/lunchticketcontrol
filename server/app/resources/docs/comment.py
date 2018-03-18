@@ -1,6 +1,11 @@
+""" Swagger documentation for comment resources """
+
 class CommentResourceDoc:
+    """ Comment resources swagger documentation """
+
     @staticmethod
     def get_by_id_docs():
+        """ Get by id endpoint documentation """
         return {
             'tags': ['comment'],
             'description': 'Returns json',

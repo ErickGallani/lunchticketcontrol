@@ -1,6 +1,11 @@
+""" Swagger documentation for meal resources """
+
 class MealResourceDoc:
+    """ Meal resources swagger documentation """
+
     @staticmethod
     def get_by_id_docs():
+        """ Get by id endpoint documentation """
         return {
             'tags': ['meal'],
             'description': 'Returns json',
@@ -31,16 +36,21 @@ class MealResourceDoc:
 
     @staticmethod
     def delete_docs():
+        """ Delete endpoint documentation """
         return {}
 
     @staticmethod
     def put_docs():
+        """ Put endpoint documentation """
         return {}
 
 
 class MealListResourceDoc:
+    """ Meal collection resources swagger documentation """
+
     @staticmethod
     def get_by_date_docs():
+        """ Get by date endpoint documentation """
         return {
             'tags': ['meal'],
             'description': 'Returns json',
@@ -71,4 +81,5 @@ class MealListResourceDoc:
 
     @staticmethod
     def post_docs():
+        """ Post endpoint documentation """
         return {}

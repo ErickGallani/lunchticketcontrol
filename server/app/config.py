@@ -1,6 +1,14 @@
 """ This module is for aggregate all configs strategies """
 class Config(object):
     """ Default config """
+    # Application name
+    APP_NAME = 'Lunch ticket'
+    # Application host
+    HOST = '127.0.0.1'
+    # Application port
+    PORT = 5050
+    # Application protocol
+    PROTOCOL = 'https'
     # Debug mode. This should be False in production mode
     DEBUG = False
     # Secret key to be used on authentoication using JWT
@@ -11,9 +19,16 @@ class Config(object):
     SESSION_COOKIE_NAME = 'lunchticketapp'
     PASSWORD_SCHEMES = 'pbkdf2_sha512'
     SWAGGER_DOCS_URL = '/api/docs'
-    SWAGGER_API_URL = 'http://127.0.0.1:5050/api/swagger.json'
     API_SPEC_URL = '/api/swagger'
     API_VERSION = '1.0'
+
+    @classmethod
+    def get_swagger_api_url(cls):
+        """
+        Get full swagger api url.
+        Eg.: http://127.0.0.1:5050/api/swagger.json
+        """
+        return "%s://%s:%s%s.json" % (cls.PROTOCOL, cls.HOST, cls.PORT, cls.API_SPEC_URL)
 
 
 class ProductionConfig(Config):

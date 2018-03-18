@@ -4,9 +4,11 @@ from flask_restful_swagger_2 import Resource, swagger
 from flask_jwt import jwt_required
 from app.models.user import User
 from app.models.ticket_history import TicketHistory
+from app.resources.docs.user import UserResourceDoc
 from app.resources.docs.ticket import TicketHistoryResourceDoc
 
-USER_RESOURCE_ENDPOINT = '/api/users/<uuid:id>'
+USER_POST_RESOURCE_ENDPOINT = '/api/users'
+USER_WITH_ID_RESOURCE_ENDPOINT = '/api/users/<uuid:id>'
 
 
 class UserResource(Resource):
@@ -22,8 +24,9 @@ class UserResource(Resource):
                         required=True,
                         help="This field cannot be blank.")
 
-    def get(self, id):
-        raise 'Testing exception'
+    @jwt_required()
+    def get(self):
+        return User.get().get_all()
 
     def post(self):
         """ Insert user data """
@@ -40,7 +43,20 @@ class UserResource(Resource):
     @classmethod
     def add_to_api_resource(cls, api):
         """ Add user resources to the current api instace """
-        api.add_resource(UserResource, USER_RESOURCE_ENDPOINT)
+        api.add_resource(UserResource, USER_POST_RESOURCE_ENDPOINT)
+
+
+class UserWithIdResource(Resource):
+    """ User with id resources """
+
+    @swagger.doc(UserResourceDoc.get_docs())
+    def get(self, id):
+        raise 'Testing exception'
+
+    @classmethod
+    def add_to_api_resource(cls, api):
+        """ Add user with id resources to the current api instace """
+        api.add_resource(UserWithIdResource, USER_WITH_ID_RESOURCE_ENDPOINT)
 
 
 class TicketHistoryResource(Resource):
