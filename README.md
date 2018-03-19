@@ -37,7 +37,6 @@
     (venv)$ python manage.py db upgrade (apply the migrations to the database)
     ```
 
-
 * #### Running It
     On your terminal, run the server using this one simple command:
     ```
@@ -45,7 +44,6 @@
     (venv)$ python run.py
     ```
     You can now access the app on your local browser by using
-
 
 ## Documentation
 * #### Backend
@@ -74,6 +72,14 @@
     * https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
 * Redux Developer Tools
     * https://github.com/zalmoxisus/redux-devtools-extension
+
+## To generate SSL Certificate
+* Using pyOpenSSL (NOTE: Do NOT install this python lib on the project virtual env)
+    * Command
+    ```
+    $ pip install pyopenssl
+    $ openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout localhost.key -out localhost.crt
+    ```
 
 ## For windows users using pycharm
 * If you are on the windows environment and want to use cmder with pycharm you can do

@@ -1,30 +1,42 @@
+""" Meal resources """
+
 from flask_jwt import jwt_required
 from flask_restful import reqparse
 from flask_restful_swagger_2 import Resource, swagger
 from app.models.meal import Meal
 from app.resources.docs.meal import MealResourceDoc, MealListResourceDoc
 
+MEALS_WITHOUT_ID_RESOURCE_ENDPOINT = '/api/meals'
+MEALS_WITH_ID_RESOURCE_ENDPOINT = '/api/meals/<uuid:id>'
 
 class MealResource(Resource):
+    """ Meal resources """
     @swagger.doc(MealResourceDoc.get_by_id_docs())
     def get(self, id):
+        """ Get meal by id endpoint """
         return Meal.get(id), 200
 
     @swagger.doc(MealResourceDoc.delete_docs())
     @jwt_required()
     def delete(self, id):
+        """ Delete meal by id endpoint """
         return '', 204
 
     @swagger.doc(MealResourceDoc.put_docs())
     @jwt_required()
     def put(self, id):
+        """ Edit meal by id endpoint """
         parser = reqparse.RequestParser()
         args = parser.parse_args()
         return '', 201
 
     @classmethod
     def add_to_api_resource(cls, api):
-        api.add_resource(MealResource, '/api/meals/<uuid:id>')
+        """
+        Add meal resources with id to the current api instace
+        :param api: Application API instance
+        """
+        api.add_resource(MealResource, MEALS_WITH_ID_RESOURCE_ENDPOINT)
 
 
 class MealListResource(Resource):
@@ -45,4 +57,8 @@ class MealListResource(Resource):
 
     @classmethod
     def add_to_api_resource(cls, api):
-        api.add_resource(MealListResource, '/api/meals')
+        """
+        Add meal resources to the current api instace
+        :param api: Application API instance
+        """
+        api.add_resource(MealListResource, MEALS_WITHOUT_ID_RESOURCE_ENDPOINT)

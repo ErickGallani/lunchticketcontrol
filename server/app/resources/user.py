@@ -7,8 +7,10 @@ from app.models.ticket_history import TicketHistory
 from app.resources.docs.user import UserResourceDoc
 from app.resources.docs.ticket import TicketHistoryResourceDoc
 
-USER_POST_RESOURCE_ENDPOINT = '/api/users'
+USER_WITHOUT_ID_RESOURCE_ENDPOINT = '/api/users'
 USER_WITH_ID_RESOURCE_ENDPOINT = '/api/users/<uuid:id>'
+USER_WITH_ID_TICKETS_WITHOUT_ID_RESOURCE_ENDPOINT = '/api/users/<uuid:id>/tickets'
+USER_WITH_ID_TICKETS_WITH_ID_RESOURCE_ENDPOINT = '/api/users/<uuid:id>/tickets/<uuid:id>'
 
 
 class UserResource(Resource):
@@ -42,20 +44,30 @@ class UserResource(Resource):
 
     @classmethod
     def add_to_api_resource(cls, api):
-        """ Add user resources to the current api instace """
-        api.add_resource(UserResource, USER_POST_RESOURCE_ENDPOINT)
+        """
+        Add user resources to the current api instace
+        :param api: Application API instance
+        """
+        api.add_resource(UserResource, USER_WITHOUT_ID_RESOURCE_ENDPOINT)
 
 
 class UserWithIdResource(Resource):
     """ User with id resources """
 
-    @swagger.doc(UserResourceDoc.get_docs())
+    @swagger.doc(UserResourceDoc.get_by_id_docs())
     def get(self, id):
+        """
+        Get user by id
+        :param id: User id
+        """
         raise 'Testing exception'
 
     @classmethod
     def add_to_api_resource(cls, api):
-        """ Add user with id resources to the current api instace """
+        """
+        Add user with id resources to the current api instace
+        :param api: Application API instance
+        """
         api.add_resource(UserWithIdResource, USER_WITH_ID_RESOURCE_ENDPOINT)
 
 
@@ -72,5 +84,9 @@ class TicketHistoryResource(Resource):
 
     @classmethod
     def add_to_api_resource(cls, api):
-        """ Add user tickets history resources to the current api instace """
-        api.add_resource(TicketHistoryResource, '/api/users/<uuid:id>/tickets')
+        """
+        Add user tickets history resources to the current api instace
+        :param api: Application API instance
+        """
+        api.add_resource(TicketHistoryResource, 
+                         USER_WITH_ID_TICKETS_WITHOUT_ID_RESOURCE_ENDPOINT)
