@@ -72,6 +72,9 @@
     * https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
 * Redux Developer Tools
     * https://github.com/zalmoxisus/redux-devtools-extension
+* Python Notebook (Jupyter)
+    * This is a excelent tool for real time python code and inspec
+    * [Jupyter](http://jupyter.org/)
 
 ## To generate SSL Certificate
 * Using pyOpenSSL (NOTE: Do NOT install this python lib on the project virtual env)
