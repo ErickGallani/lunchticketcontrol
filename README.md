@@ -84,6 +84,27 @@
     $ openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout localhost.key -out localhost.crt
     ```
 
+## For Visual Studio Code users
+* To be able to debug the application inside visual studio code change the file **launch.json** inside **.vscode** locate the section **configurations** add the following config
+    ```
+    {
+        "name": "Python: Flask Lunch Ticket app",
+        "type": "python",
+        "request": "launch",
+        "stopOnEntry": false,
+        "pythonPath": "${config:python.pythonPath}",
+        "program": "${workspaceFolder}/server/run.py",
+        "cwd": "${workspaceFolder}",
+        "args": [],
+        "env": {},
+        "envFile": "${workspaceFolder}/.env",
+        "debugOptions": [
+            "RedirectOutput"
+        ]
+    }
+    ```
+* Inside the **run.py** set the debug to false to prevent conflict between visual studio debug runner and werkzeug (flask runner) Eg.: **debug=False**
+
 ## For windows users using pycharm
 * If you are on the windows environment and want to use cmder with pycharm you can do
 * Create a environment variable

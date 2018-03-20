@@ -60,5 +60,8 @@ APP_CONFIGS_TYPES = {
 }
 
 def get_app_config(config_name):
-    """ Get the application configuration by configuration name """
+    """
+    Get the application configuration by configuration name
+    :param config_name: Configuration name to retrieve the config class
+    """
     return APP_CONFIGS_TYPES[config_name]

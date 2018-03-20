@@ -1,6 +1,5 @@
 """ Ticket resources """
 from flask_restful_swagger_2 import Resource, swagger, request
-from flask_jwt import jwt_required
 from app.models.ticket import Ticket
 from app.resources.docs.ticket import TicketResourceDoc
 
@@ -8,16 +7,25 @@ TICKETS_WITHOUT_ID_RESOURCE_ENDPOINT = '/api/tickets'
 TICKETS_WITH_ID_RESOURCE_ENDPOINT = '/api/tickets/<uuid:id>'
 
 
+def request_filter(func):
+    def call(*args, **kwargs):
+        print(func.__name__, *args, **kwargs)
+        print(request.args)
+        result = func(*args, request.args, **kwargs)
+        return result
+    return call
+
 class TicketResource(Resource):
     """ User resources """
     @swagger.doc(TicketResourceDoc.get_docs())
-    def get(self):
+    @request_filter
+    def get(self, request_args):
         """
         Get user by id
         :param filter: Query string with filter[date] = timestamp of a date without hours
         """
 
-        print(request.args)
+        print(request_args)
 
         query_filter = request.args.get('filter')
 

@@ -9,7 +9,7 @@ from raven.contrib.flask import Sentry
 from app.auth.security import authenticate, identity
 from app.resources.user import UserResource, UserWithIdResource, TicketHistoryResource
 from app.resources.ticket import TicketResource
-from app.resources.meal import MealResource, MealListResource
+from app.resources.meal import MealResource, MealWithIdResource
 from app.resources.comment import CommentResource
 from app.resources.home import HomeResource
 from app.config import get_app_config
@@ -72,7 +72,7 @@ def __add_resources(api):
 
     # Meal resources
     MealResource.add_to_api_resource(api)
-    MealListResource.add_to_api_resource(api)
+    MealWithIdResource.add_to_api_resource(api)
 
     # Comment resources
     CommentResource.add_to_api_resource(api)
