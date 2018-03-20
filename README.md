@@ -94,7 +94,7 @@
         "stopOnEntry": false,
         "pythonPath": "${config:python.pythonPath}",
         "program": "${workspaceFolder}/server/run.py",
-        "cwd": "${workspaceFolder}",
+        "cwd": "${workspaceFolder}/server",
         "args": [],
         "env": {},
         "envFile": "${workspaceFolder}/.env",

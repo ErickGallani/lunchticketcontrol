@@ -12,5 +12,5 @@ CONFIG = get_app_config(CONFIG_TYPE)
 if __name__ == '__main__':
     APP.run(host=CONFIG.HOST,
             port=CONFIG.PORT,
-            ssl_context=('./server/cert/localhost.crt',
-                         './server/cert/localhost.key'))
+            ssl_context=('cert/localhost.crt',
+                         'cert/localhost.key'))
