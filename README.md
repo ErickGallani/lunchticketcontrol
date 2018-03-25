@@ -7,6 +7,11 @@
 * [Virtualenv](https://virtualenv.pypa.io/en/stable/)
 * [NodeJS](https://nodejs.org/)
 
+## Specification for the API design
+* [JsonApi](http://jsonapi.org/)
+* [REST Design](https://www.w3.org/2001/sw/wiki/REST)
+* [Swagger Spec](http://docs.swagger.io/spec.html)
+
 ## Installation / Usage
 * #### Install Python & Pip on windows
     * https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation
