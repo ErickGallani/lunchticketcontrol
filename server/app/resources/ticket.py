@@ -1,5 +1,5 @@
 """ Ticket resources """
-from flask_restful_swagger_2 import Resource, swagger
+from flask_restful_swagger_2 import Resource, swagger, request
 from app.models.ticket import Ticket
 from app.resources.docs.ticket import TicketResourceDoc
 from app.decorators.query_string import request_filter
@@ -11,7 +11,7 @@ TICKETS_WITH_ID_RESOURCE_ENDPOINT = '/api/tickets/<uuid:id>'
 class TicketResource(Resource):
     """ User resources """
     @swagger.doc(TicketResourceDoc.get_docs())
-    @request_filter
+    @request_filter(request)
     def get(self, request_args):
         """
         Get user by id
@@ -19,7 +19,7 @@ class TicketResource(Resource):
         """
         print(request_args)
 
-        return Ticket.find_by_date(None), 200
+        return Ticket.find_by_date(request_args.filters['date']), 200
 
     @classmethod
     def add_to_api_resource(cls, api):

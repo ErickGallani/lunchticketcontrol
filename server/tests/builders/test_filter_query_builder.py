@@ -99,6 +99,7 @@ class FilterQueryBuilderTestCase(unittest.TestCase):
         self.assertEqual(expected_filters_length, len(result.filters))
         self.assertIsNotNone(result.filters.get("date"))
         self.assertEqual(result.filters.get("date"), 1521417600)
+        self.assertIsNone(result.filters.get("test"))
 
     def test_build_with_two_filter_argument_correct_return_correct_filters(self):
         # arrange
