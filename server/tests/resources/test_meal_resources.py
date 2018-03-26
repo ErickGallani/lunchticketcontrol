@@ -18,15 +18,5 @@ class MealTestCase(unittest.TestCase):
             db.session.close()
             db.drop_all()
 
-    def test_home_endpoint(self):
-        """ Just testing the unit test setup """
-        return_value = self.test_app.get('/')
-        data_json = json.loads(return_value.data.decode("utf-8"))
-
-        assert 'message' in data_json, \
-                "return does not have 'message' property - %r" % data_json
-        assert data_json["message"] == 'Home endpoint', \
-                "return of end point does not match - %r" % data_json["message"]
-
 if __name__ == '__main__':
     unittest.main()

@@ -1,11 +1,11 @@
-import flask
 from datetime import datetime
+import flask
+from marshmallow import Schema, fields
+from sqlalchemy_utils import PasswordType, force_auto_coercion
 from app.database.database_config import db
 from app.helpers.uuid_helper import generate_uuid
-from sqlalchemy_utils import PasswordType, force_auto_coercion
 
 force_auto_coercion()
-
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -48,3 +48,8 @@ class User(db.Model):
     @classmethod
     def find_by_id(cls, _id):
         return cls.query.filter_by(id=_id).first()
+
+class UserSchema(Schema):
+    id = fields.Str(dump_only=True)
+    created_at = fields.DateTime()
+    username = fields.Str()

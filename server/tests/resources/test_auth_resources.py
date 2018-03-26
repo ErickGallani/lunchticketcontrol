@@ -52,14 +52,14 @@ class AuthResourceTestCase(unittest.TestCase):
                 "Description does not contain 'Invalid credentials'"
 
     def __login(self, username, password):
-        return self.app.post('/auth',
+        return self.test_app.post('/auth',
                              data=dict(
                                  username=username,
                                  password=password
                              ), follow_redirects=True)
 
     def __logout(self):
-        return self.app.get('/logout', follow_redirects=True)
+        return self.test_app.get('/logout', follow_redirects=True)
 
 
 if __name__ == '__main__':

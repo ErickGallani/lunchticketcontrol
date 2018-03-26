@@ -14,10 +14,12 @@ class Availability(db.Model):
 
     tickets = db.relationship('Ticket', backref='tickets', lazy=True)
 
-    def __init__(self):
+    def __init__(self, time, meal_id):
+        self.time = time
+        self.meal_id = meal_id
         self.created_at = datetime.utcnow()
 
-    def save_or_update(self):
+    def save(self):
         db.session.add(self)
         db.session.commit()
 

@@ -15,9 +15,10 @@ class Meal(db.Model):
 
     availabilities = db.relationship('Availability', backref='meals', lazy=True)
 
-    def __init__(self, title, description, picture):
+    def __init__(self, title, description, date, picture):
         self.title = title
         self.description = description
+        self.date = date
         self.picture = picture
         self.created_at = datetime.utcnow()
 
@@ -29,7 +30,7 @@ class Meal(db.Model):
     def get(cls, id):
         return cls.query.get(id)
 
-    def save_or_update(self):
+    def save(self):
         db.session.add(self)
         db.session.commit()
 
