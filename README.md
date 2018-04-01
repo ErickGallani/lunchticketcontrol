@@ -61,6 +61,7 @@
     * [SQLAlchemy](https://www.sqlalchemy.org/)
     * [Alembic](https://pypi.python.org/pypi/alembic)
     * [PyQRCode](https://pypi.python.org/pypi/PyQRCode)
+    * [Marshmallow](https://marshmallow.readthedocs.io/en/latest/)
 * #### Frontend
     * [ReactJS](https://reactjs.org/)
     * [NodeJS](https://nodejs.org/)
